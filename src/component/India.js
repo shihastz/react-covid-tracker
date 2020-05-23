@@ -1,51 +1,46 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import StateData from "./StateData";
-import axios from 'axios';
-import { Doughnut } from 'react-chartjs-2';
-
-
+import axios from "axios";
+import { Doughnut } from "react-chartjs-2";
 
 export default class India extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      data : {}
-    }
+      data: {},
+    };
   }
 
-  componentDidMount(){
- 
-
+  componentDidMount() {
     axios
-        .get("https://corona.lmao.ninja/v2/countries/india")
-        .then((response) => {
-            this.setState({ data: response.data });
-        });
+      .get("https://corona.lmao.ninja/v2/countries/india")
+      .then((response) => {
+        this.setState({ data: response.data });
+      });
   }
-  
+
   render() {
     const data = {
-      labels : ['Active cases', 'Recovered', 'Deaths'],
-      datasets : [
-          {
-              label : 'Sales for 2020(M)',
-              data : [this.state.data.active,this.state.data.recovered,this.state.data.deaths],
-              backgroundColor: [
-                  "#ffc107",
-                  "green",
-                  "#dc3545"
-                ]
-          }
-      ]
-    }
+      labels: ["Active cases", "Recovered", "Deaths"],
+      datasets: [
+        {
+          label: "Sales for 2020(M)",
+          data: [
+            this.state.data.active,
+            this.state.data.recovered,
+            this.state.data.deaths,
+          ],
+          backgroundColor: ["#ffc107", "green", "#dc3545"],
+        },
+      ],
+    };
     const option = {
-      title : {
-          display : true,
-          text : 'Doughnut Chart'
-      }
-    }
+      title: {
+        display: true,
+        text: "Doughnut Chart",
+      },
+    };
     const key = JSON.stringify(option);
     return (
       <div className="row">
@@ -64,7 +59,10 @@ export default class India extends Component {
               </Card>
             </div>
             <div className="col-md-3">
-              <Card style={{ width: "18rem", color: "white" }} className="badge badge-warning">
+              <Card
+                style={{ width: "18rem", color: "white" }}
+                className="badge badge-warning"
+              >
                 <Card.Body className="text-center">
                   <Card.Title>ACTIVE CASES</Card.Title>
                   <h3>{this.state.data.active}</h3>
@@ -90,7 +88,7 @@ export default class India extends Component {
           </div>
         </div>
         <div className="col-md-5">
-          <Doughnut data={data} options={option}/>
+          <Doughnut data={data} options={option} />
         </div>
         <div className="col-md-12">
           <h5>States</h5>

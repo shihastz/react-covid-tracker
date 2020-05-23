@@ -37,6 +37,7 @@ export default class StateData extends Component {
               total_confirmed += districts[x].confirmed;
               total_deaths += districts[x].deceased;
               total_recovered += districts[x].recovered;
+              
               //for pushing district name
               d_details = districts[x];
               d_details['district_name'] = x;

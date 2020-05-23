@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-      date: new Date().toLocaleString()
-    }
+      date: new Date().toLocaleString(),
+    };
   }
-  
+
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -25,9 +25,8 @@ export default class Header extends Component {
               World
             </Link>
           </Nav>
-          
-            <Nav style={{color :"white"}}>{this.state.date}</Nav>
-          
+
+          <Nav style={{ color: "white" }}>{this.state.date}</Nav>
         </Navbar.Collapse>
       </Navbar>
     );
